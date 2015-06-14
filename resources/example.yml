@@ -1,0 +1,219 @@
+# TradeCraft
+# Custom villager tiers, trades and rebalancing
+# https://github.com/CoreNetwork/TradeCraft
+
+# This file is completely static and editing it will not affect anything in the game
+# It's purely for tutorial purposes
+
+# Currency item ID is a faster way to define prices in the tree below
+# Instead of defining the emerald ID and amount, you can just do currency: 5 
+# for 5 emeralds
+Currency: emerald
+
+# A trade completed for the first time has 100% chance to restock all trades
+# Subsequent trading has only 20% chance to restock all trades.
+# Please notice that because you can complete a single trade 3-13 times (vanilla amount),
+# any of those completions has 20% chance to restock all trades. So if you manage to trade 8 times,
+# the plugin will roll a dice 8 times, and every roll has 20% chance. This value is vanilla.
+#
+# Players will still need to close the trade window for the plugin to check if it should restock trades.
+AllUnlockedRefreshChance: 0.2
+
+# If set to true, the villager types not found in `Professions` list will keep vanilla trades and general behaviour
+# Otherwise, they will be replaced by NO_CAREER villager with impossible trade
+KeepVanillaTradesIfNoneSpecified: false
+
+#Color code for default color of profession name in Villager GUI
+#Can be left blank - just put   DefaultProfessionColor: ''   here.
+DefaultProfessionColor: '&1'
+Debug: false
+
+Messages:
+  NoPermission: No permission!
+  ConfigurationReloaded: Configuration reloaded successfully!
+
+# Declare profession names for specific villager types. 
+# The career name will be displayed in villager's trade window
+# You can go with vanilla career names or invent your own.
+# If you declare a career here, you have to write at least one trade for it below.
+Professions:
+  '0':
+  - Farmer
+  - Fisherman
+  - Shepherd
+  - Fletcher
+  '1':
+  - Librarian
+  '2':
+  - Cleric
+  '3':
+  - Armorer
+  - Weapon Smith
+  - Tool Smith
+  '4':
+# You can also make rare villagers by specifying weights like below
+# In this case for every 100 Butcher villagers, 1 will be Leatherworker
+  - weights 100 1
+  - Butcher
+  - Leatherworker
+# Professions from CustomProfessions will only spawn via command :
+# /tradecraft spawn <villagerType> <customProfession>
+CustomProfessions:
+- ShopKeep
+Tiers:
+# Here you declare tiers with trades for every career type you defined above
+# This particular farmer has 4 tiers.
+# Tiers can have one trade but in Minecraft 1.8 snapshots they have more than one
+# Completing any trade from the very last tier has 100% chance to unlock another tier.
+# Completely any trade from any tier but the last tier has 20% to unlock another tier.
+
+# Here you can also specify a color for profession name in Villager GUI for each profession
+  Farmer:
+    color: '&c'
+    '0':
+    - trade:
+        # comment is used just for navigation and finding trades in this document fast
+        # it's not used for anything internally
+        comment: buying wheat
+        # itemA is the first slot on the left
+        # you can also provide itemB
+        itemA:
+          item: wheat
+          # amount is a range - in this case a random number between 18 and 22 (inclusive)
+          amount: 18,22
+        # result is the last slot on the right
+        # buying/selling is defined by how items are arranged. 
+        # currency in the result slot usually means selling
+        # you can also provide id+amount in here, no need to use currency 
+        # (example: gravel + emerald -> flint)
+        result:
+          currency: 1
+    - trade:
+        comment: buying potatoes
+        itemA:
+          item: potato
+          amount: 15,19
+        result:
+          currency: 1
+    - trade:
+        comment: buying carrots
+        itemA:
+          item: carrot
+          amount: 15,19
+        result:
+          currency: 1
+    - trade:
+        comment: selling bread
+        itemA:
+          currency: 1
+        result:
+          item: bread
+          amount: 2,4
+    '1':
+    - trade:
+        comment: buying pumpkin
+        itemA:
+          item: pumpkin
+          amount: 8,13
+        result:
+          currency: 1
+    - trade:
+        comment: selling pumpkin pie
+        itemA:
+          currency: 1
+        result:
+          item: pumpkin_pie
+          amount: 2,3
+    '2':
+    - trade:
+        comment: buying melons
+        itemA:
+          item: melon_block
+          amount: 7,12
+        result:
+          currency: 1
+    - trade:
+        comment: selling apples
+        itemA:
+          currency: 1
+        result:
+          item: apple
+          amount: 5,7
+    '3':
+    - trade:
+        comment: selling cookies
+        itemA:
+          currency: 1
+        result:
+          item: cookie
+          amount: 6,10
+    - trade:
+        comment: selling cake
+        itemA:
+          currency: 1
+        result:
+          item: cake
+          amount: 1
+  # Following example explains enchantments
+  Shepherd:
+    '0':
+    - trade:
+        comment: selling enchanted shears
+        itemA:
+          currency: 2,3
+        result:
+          item: shears
+          amount: 1
+          # these shears will always be sold with two enchantments 
+          # you can find enchantments IDs here:
+          # http://minecraft.gamepedia.com/Enchanting#Enchantments
+          enchants:
+          - enchant:
+              efficiency: 1
+              # comments are just to describe enchants, they don't actually do anything
+          - enchant:
+              unbreaking: 1
+    - trade:
+        comment: selling awesome enchanted shears
+        itemA:
+          currency: 5,6
+        result:
+          item: shears
+          amount: 1
+          # in this case, we are randomly picking one random enchantment 
+          # from the whole list
+          enchants:
+          - pick:
+            # weights is a way to make certain choices more likely to be picked than others
+            # make sure the number of weights is equal to the number of your enchants
+            - weights 10 2 1 1
+            - enchant:
+                efficiency: 2
+            - enchant:
+                efficiency: 5
+            - enchant:
+                unbreaking: 3
+                # this value is added to itemA.amount (or currency) - you can basically 
+                # increase the price if certain high level enchantments are picked
+                # amount is capped at 64 and bonusAmountB works too
+                bonusAmountA: 32,35
+            # you can also provide a group of enchants. if this is picked,
+            # every enchant node will be applied to the item
+            - group:
+              - enchant:
+                  efficiency: 4
+              - enchant:
+                  silk_touch: 1
+  ShopKeep:
+    '0':
+    - trade:
+        itemA:
+          item: dirt
+          amount: 64
+        result:
+          currency: 1
+    - trade:
+        itemA:
+          currency: 16
+        result:
+          item: diamond
