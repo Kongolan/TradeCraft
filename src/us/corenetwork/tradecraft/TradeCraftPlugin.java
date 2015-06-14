@@ -10,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import us.corenetwork.tradecraft.commands.BaseCommand;
 import us.corenetwork.tradecraft.commands.ReloadCommand;
 import us.corenetwork.tradecraft.commands.SaveCommand;
-import us.corenetwork.tradecraft.commands.SpawnCommand;
 import us.corenetwork.tradecraft.shopkeeper.ShopkeepersHelper;
 
 public class TradeCraftPlugin extends JavaPlugin {
@@ -27,7 +26,6 @@ public class TradeCraftPlugin extends JavaPlugin {
 		
 		commands.put("reload", new ReloadCommand());
 		commands.put("save", new SaveCommand());
-		commands.put("spawn", new SpawnCommand());
 		
 		getServer().getPluginManager().registerEvents(new TradeCraftListener(), this);
 		
