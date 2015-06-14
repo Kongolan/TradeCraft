@@ -24,10 +24,6 @@ The plugin will create its `TradeCraft` directory and inside, `config.yml`, `exa
     
 Run through console to save the trade queue to the DB. It will be automatically executed on world save as well.
 
-    /tradecraft spawn <id> <profession>
-
-Spawn a custom Villager which can act as a shop keeper. Parameters: `<id>` is villager type, `<profession>` is a special profession defined in config (`CustomProfessions`), outside of default ones. If you need this Villager to stop moving and be invulnerable you’ll have to use vanilla’s [`/entitydata`](http://minecraft.gamepedia.com/Commands#entitydata).
-
 ## Configuration
 
 Refer to [`example.yml`](https://github.com/CoreNetwork/TradeCraft/blob/master/resources/example.yml) to learn how the plugin allows to edit trades.
