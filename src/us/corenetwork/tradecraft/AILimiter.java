@@ -1,30 +1,31 @@
 package us.corenetwork.tradecraft;
 
-import net.minecraft.server.v1_8_R3.EntityInsentient;
-import net.minecraft.server.v1_8_R3.PathfinderGoal;
-import net.minecraft.server.v1_8_R3.PathfinderGoalAvoidTarget;
-import net.minecraft.server.v1_8_R3.PathfinderGoalMoveIndoors;
-import net.minecraft.server.v1_8_R3.PathfinderGoalMoveTowardsRestriction;
-import net.minecraft.server.v1_8_R3.PathfinderGoalOpenDoor;
-import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
-import net.minecraft.server.v1_8_R3.PathfinderGoalRestrictOpenDoor;
-import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
-import net.minecraft.server.v1_8_R3.PathfinderGoalTakeFlower;
+import net.minecraft.server.v1_9_R1.EntityInsentient;
+import net.minecraft.server.v1_9_R1.PathfinderGoal;
+import net.minecraft.server.v1_9_R1.PathfinderGoalAvoidTarget;
+import net.minecraft.server.v1_9_R1.PathfinderGoalMoveIndoors;
+import net.minecraft.server.v1_9_R1.PathfinderGoalMoveTowardsRestriction;
+import net.minecraft.server.v1_9_R1.PathfinderGoalOpenDoor;
+import net.minecraft.server.v1_9_R1.PathfinderGoalRandomStroll;
+import net.minecraft.server.v1_9_R1.PathfinderGoalRestrictOpenDoor;
+import net.minecraft.server.v1_9_R1.PathfinderGoalSelector;
+import net.minecraft.server.v1_9_R1.PathfinderGoalTakeFlower;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class AILimiter
 {
     public static void apply(EntityInsentient entityInsentient)
     {
         PathfinderGoalSelector goalSelector = (PathfinderGoalSelector) ReflectionUtils.get(EntityInsentient.class, entityInsentient, "goalSelector");
-        List goalsListB = (List) ReflectionUtils.get(PathfinderGoalSelector.class, goalSelector, "b"); //List of all pathfinder goals
-        List goalsListC = (List) ReflectionUtils.get(PathfinderGoalSelector.class, goalSelector, "c"); //Cache of pathfinder goals
+        Set goalsListB = (Set) ReflectionUtils.get(PathfinderGoalSelector.class, goalSelector, "b"); //List of all pathfinder goals
+        Set goalsListC = (Set) ReflectionUtils.get(PathfinderGoalSelector.class, goalSelector, "c"); //Cache of pathfinder goals
         Class pathfinderGoalSelectorItemClass = null;
         try
         {
-            pathfinderGoalSelectorItemClass = Class.forName("net.minecraft.server.v1_8_R3.PathfinderGoalSelector$PathfinderGoalSelectorItem");
+            pathfinderGoalSelectorItemClass = Class.forName("net.minecraft.server.v1_9_R1.PathfinderGoalSelector$PathfinderGoalSelectorItem");
         } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
@@ -91,9 +92,9 @@ public class AILimiter
         }
 
         @Override
-        public boolean i()
+        public boolean g()
         {
-            return original.i();
+            return original.g();
         }
 
         @Override
@@ -121,9 +122,9 @@ public class AILimiter
         }
 
         @Override
-        public int j()
+        public int h()
         {
-            return original.j();
+            return original.h();
         }
     }
 }
