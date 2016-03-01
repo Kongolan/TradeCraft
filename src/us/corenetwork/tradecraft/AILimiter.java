@@ -1,5 +1,8 @@
 package us.corenetwork.tradecraft;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import net.minecraft.server.v1_9_R1.EntityInsentient;
 import net.minecraft.server.v1_9_R1.PathfinderGoal;
 import net.minecraft.server.v1_9_R1.PathfinderGoalAvoidTarget;
@@ -10,10 +13,6 @@ import net.minecraft.server.v1_9_R1.PathfinderGoalRandomStroll;
 import net.minecraft.server.v1_9_R1.PathfinderGoalRestrictOpenDoor;
 import net.minecraft.server.v1_9_R1.PathfinderGoalSelector;
 import net.minecraft.server.v1_9_R1.PathfinderGoalTakeFlower;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class AILimiter
 {
