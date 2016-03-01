@@ -1,22 +1,21 @@
 package us.corenetwork.tradecraft;
 
-import java.util.Random;
-
-import net.minecraft.server.v1_8_R3.Block;
-import net.minecraft.server.v1_8_R3.EntityAgeable;
-import net.minecraft.server.v1_8_R3.EntityExperienceOrb;
-import net.minecraft.server.v1_8_R3.EntityHuman;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.server.v1_8_R3.EntityVillager;
-import net.minecraft.server.v1_8_R3.ItemStack;
-import net.minecraft.server.v1_8_R3.MerchantRecipe;
-import net.minecraft.server.v1_8_R3.MerchantRecipeList;
-import net.minecraft.server.v1_8_R3.MinecraftKey;
-import net.minecraft.server.v1_8_R3.MobEffect;
-import net.minecraft.server.v1_8_R3.MobEffectList;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
-import net.minecraft.server.v1_8_R3.Village;
-import net.minecraft.server.v1_8_R3.World;
+import net.minecraft.server.v1_9_R1.Block;
+import net.minecraft.server.v1_9_R1.EntityAgeable;
+import net.minecraft.server.v1_9_R1.EntityExperienceOrb;
+import net.minecraft.server.v1_9_R1.EntityHuman;
+import net.minecraft.server.v1_9_R1.EntityPlayer;
+import net.minecraft.server.v1_9_R1.EntityVillager;
+import net.minecraft.server.v1_9_R1.EnumHand;
+import net.minecraft.server.v1_9_R1.ItemStack;
+import net.minecraft.server.v1_9_R1.MerchantRecipe;
+import net.minecraft.server.v1_9_R1.MerchantRecipeList;
+import net.minecraft.server.v1_9_R1.MinecraftKey;
+import net.minecraft.server.v1_9_R1.MobEffect;
+import net.minecraft.server.v1_9_R1.MobEffects;
+import net.minecraft.server.v1_9_R1.SoundEffects;
+import net.minecraft.server.v1_9_R1.Village;
+import net.minecraft.server.v1_9_R1.World;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -98,7 +97,7 @@ public class CustomVillager extends EntityVillager {
 	 * (trading window closes))
 	 */
 	@Override
-	public void a_(EntityHuman entityHuman) {
+	public void setTradingPlayer(EntityHuman entityHuman) {
 		if (tradeCraftVillager != null) {
 			if (entityHuman == null) // Nobody is trading now
 			{
@@ -122,9 +121,8 @@ public class CustomVillager extends EntityVillager {
 					}
 
 					// Particle effect when new tier is created
-					this.addEffect(new MobEffect(MobEffectList.REGENERATION.id,
-							200, 0));
-					
+				    this.addEffect(new MobEffect(MobEffects.REGENERATION, 200, 0));
+
 					// set willing
 					super.o(true);
 				}
@@ -136,7 +134,7 @@ public class CustomVillager extends EntityVillager {
 						+ this.getUniqueID().toString());
 		}
 
-		super.a_(entityHuman);
+		super.setTradingPlayer(entityHuman);
 	}
 
 	/**
@@ -145,12 +143,12 @@ public class CustomVillager extends EntityVillager {
 	 * @return has trade window been opened
 	 */
 	@Override
-	public boolean a(EntityHuman entityHuman) {
+	public boolean a(EntityHuman entityHuman, EnumHand enumhand, ItemStack itemstack) {
 		if (tradeCraftVillager == null)
 			init();
 
 		overrideName = true;
-		boolean returningBool = super.a(entityHuman);
+		boolean returningBool = super.a(entityHuman, enumhand, itemstack);
 		overrideName = false;
 
 		return returningBool;
@@ -179,10 +177,10 @@ public class CustomVillager extends EntityVillager {
 			return;
 		}
 		// Yes/No sound
-		this.makeSound("mob.villager.yes", this.bB(), this.bC());
+		super.a(SoundEffects.gu, cd(), ce());
 
 		// Refresh inventory
-		EntityHuman human = v_();
+		EntityHuman human = t_();
 		if (human != null && human instanceof EntityPlayer) {
 			final org.bukkit.entity.Player player = ((EntityPlayer) human)
 					.getBukkitEntity();
