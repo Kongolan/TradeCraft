@@ -4,7 +4,7 @@
 
     <groupId>TradeCraft</groupId>
     <artifactId>TradeCraft</artifactId>
-    <version>1.1.4</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
     <name>TradeCraft</name>
     <url>https://github.com/CoreNetwork/TradeCraft</url>
@@ -29,25 +29,52 @@
             </plugin>
         </plugins>
     </build>
+    
+	<repositories>
+	
+        <!-- SpigotMC Repo (Bukkit and SpigotAPI) -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots</url>
+        </repository>
+        
+        <!-- Shopkeepers Repo -->
+        <repository>
+            <id>de.cube-nation.nexus.public</id>
+            <url>http://nexus.cube-nation.de/content/groups/public/</url>
+        </repository>
+        
+	</repositories>
 
-    <repositories>
+    <distributionManagement>
         <repository>
-            <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public</url>
+            <id>de.cube-nation.nexus.release</id>
+            <url>http://nexus.cube-nation.de/content/repositories/releases</url>
         </repository>
-        <repository>
-            <id>sk89q-repo</id>
-            <url>http://maven.sk89q.com/repo/</url>
-        </repository>
-    </repositories>
+        <snapshotRepository>
+            <id>de.cube-nation.nexus.snapshot</id>
+            <url>http://nexus.cube-nation.de/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
-
+    
+    	<!--Spigot API-->
+    	<dependency>
+           	<groupId>org.spigotmc</groupId>
+          	<artifactId>spigot</artifactId>
+           	<version>1.9-R0.1-SNAPSHOT</version>
+        	<scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        
+		<!-- Shopkeepers plugin -->
         <dependency>
-            <groupId>org.spigot</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.8.3-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <groupId>com.nisovin.shopkeepers</groupId>
+            <artifactId>Shopkeepers</artifactId>
+            <version>1.53</version>
+        	<scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
