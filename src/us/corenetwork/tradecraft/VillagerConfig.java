@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import net.minecraft.server.v1_9_R1.NBTTagCompound;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_9_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -159,7 +159,7 @@ public class VillagerConfig {
 			}
 
 			if (newTag != null) {
-				net.minecraft.server.v1_8_R3.ItemStack nmsStack = CraftItemStack
+				net.minecraft.server.v1_9_R1.ItemStack nmsStack = CraftItemStack
 						.asNMSCopy(stack);
 				nmsStack.setTag(newTag);
 				stack = CraftItemStack.asCraftMirror(nmsStack);
