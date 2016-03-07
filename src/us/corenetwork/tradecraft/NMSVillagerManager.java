@@ -2,15 +2,17 @@ package us.corenetwork.tradecraft;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import net.minecraft.server.v1_8_R3.BiomeBase;
-import net.minecraft.server.v1_8_R3.EntityTypes;
-import net.minecraft.server.v1_8_R3.EntityVillager;
-import net.minecraft.server.v1_8_R3.NBTReadLimiter;
-import net.minecraft.server.v1_8_R3.World;
+import net.minecraft.server.v1_9_R1.BiomeBase;
+import net.minecraft.server.v1_9_R1.EntityTypes;
+import net.minecraft.server.v1_9_R1.EntityVillager;
+import net.minecraft.server.v1_9_R1.NBTReadLimiter;
+import net.minecraft.server.v1_9_R1.World;
+
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftVillager;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftVillager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
@@ -29,16 +31,16 @@ public class NMSVillagerManager {
         ((Map) ReflectionUtils.getStatic(EntityTypes.class, "f")).put(CustomVillager.class, 120);
 
         //Replace all villagers in biomes
-        BiomeBase[] biomes = (BiomeBase[]) ReflectionUtils.getStatic(BiomeBase.class, "biomes");
+        Set<BiomeBase> biomes = (Set<BiomeBase>) ReflectionUtils.getStatic(BiomeBase.class, "i");
         for (BiomeBase biome : biomes)
         {
             if (biome == null)
                 continue;
 
-            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "aw"));
-            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "at"));
-            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "au"));
-            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "av"));
+            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "x"));
+            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "u"));
+            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "v"));
+            fixBiomeMeta((List<BiomeBase.BiomeMeta>) ReflectionUtils.get(BiomeBase.class, biome, "w"));
 
         }
     }
