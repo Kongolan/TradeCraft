@@ -3,7 +3,8 @@ TradeCraft
 
 Custom villager tiers, trades and rebalancing.
 
-Supported version: Spigot 1.8
+Supported version: Spigot 1.9
+Works with Shopkeepers
 
 
 ## Download
@@ -122,5 +123,3 @@ The plugin implements villager trading mechanics from Minecraft 1.8. You need to
 ## Known issues
 
 Because the profession and its trades are pulled from the database when a villager is right clicked, some client-side mods might show different profession than the one accessed in the trade window.
-
-Plugin will not co-operate with any other plugin influencing villager trades.
