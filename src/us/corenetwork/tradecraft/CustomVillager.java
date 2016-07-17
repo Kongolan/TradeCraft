@@ -177,10 +177,10 @@ public class CustomVillager extends EntityVillager {
 			return;
 		}
 		// Yes/No sound
-		super.a(SoundEffects.gu, cd(), ce());
+		super.a(SoundEffects.gu, ch(), ci());
 
 		// Refresh inventory
-		EntityHuman human = t_();
+		EntityHuman human = getTrader();
 		if (human != null && human instanceof EntityPlayer) {
 			final org.bukkit.entity.Player player = ((EntityPlayer) human)
 					.getBukkitEntity();
