@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import net.minecraft.server.v1_9_R1.BiomeBase;
-import net.minecraft.server.v1_9_R1.EntityTypes;
-import net.minecraft.server.v1_9_R1.EntityVillager;
-import net.minecraft.server.v1_9_R1.NBTReadLimiter;
-import net.minecraft.server.v1_9_R1.World;
+import net.minecraft.server.v1_10_R1.BiomeBase;
+import net.minecraft.server.v1_10_R1.EntityTypes;
+import net.minecraft.server.v1_10_R1.EntityVillager;
+import net.minecraft.server.v1_10_R1.NBTReadLimiter;
+import net.minecraft.server.v1_10_R1.World;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_9_R1.entity.CraftVillager;
+import org.bukkit.craftbukkit.v1_10_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_10_R1.entity.CraftVillager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;

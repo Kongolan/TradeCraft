@@ -2,8 +2,8 @@ package us.corenetwork.tradecraft;
 
 import java.util.Map;
 
-import net.minecraft.server.v1_9_R1.EnchantmentManager;
-import net.minecraft.server.v1_9_R1.MathHelper;
+import net.minecraft.server.v1_10_R1.EnchantmentManager;
+import net.minecraft.server.v1_10_R1.MathHelper;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

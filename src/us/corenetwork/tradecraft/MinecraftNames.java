@@ -1,7 +1,7 @@
 package us.corenetwork.tradecraft;
 
-import net.minecraft.server.v1_9_R1.Item;
-import net.minecraft.server.v1_9_R1.Enchantment;
+import net.minecraft.server.v1_10_R1.Item;
+import net.minecraft.server.v1_10_R1.Enchantment;
 
 /**
  * Created by Matej on 2.12.2014.

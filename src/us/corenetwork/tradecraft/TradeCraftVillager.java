@@ -1,6 +1,6 @@
 package us.corenetwork.tradecraft;
 
-import net.minecraft.server.v1_9_R1.MerchantRecipeList;
+import net.minecraft.server.v1_10_R1.MerchantRecipeList;
 
 import java.util.List;
 
