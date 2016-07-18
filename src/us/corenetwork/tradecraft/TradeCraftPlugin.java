@@ -10,7 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import us.corenetwork.tradecraft.commands.BaseCommand;
 import us.corenetwork.tradecraft.commands.ReloadCommand;
 import us.corenetwork.tradecraft.commands.SaveCommand;
-import us.corenetwork.tradecraft.shopkeeper.ShopkeepersHelper;
+import us.corenetwork.tradecraft.helpers.CitizensHelper;
+import us.corenetwork.tradecraft.helpers.ShopkeepersHelper;
 
 public class TradeCraftPlugin extends JavaPlugin {
 	public static TradeCraftPlugin instance;
@@ -36,11 +37,12 @@ public class TradeCraftPlugin extends JavaPlugin {
 		NMSVillagerManager.register();
 		Villagers.LoadVillagers();
 		
-		// Checks if Shopkeepers is running
+		// Connecting with helpers for plugin compatibility
 		try {
 			ShopkeepersHelper.connectWithShopkeepers(this);
+			CitizensHelper.connectWithCitizens(this);
 		} catch (Exception e) {
-			getLogger().info("Shopkeepers plugin not found. Ignoring...");
+			getLogger().info("Plugin not found. Ignoring...");
 		}
 	}
 

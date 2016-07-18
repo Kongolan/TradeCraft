@@ -12,8 +12,9 @@ import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.entity.EntityPortalExitEvent;
 import org.bukkit.event.world.WorldSaveEvent;
 
-import us.corenetwork.tradecraft.shopkeeper.ShopkeeperWaiter;
-import us.corenetwork.tradecraft.shopkeeper.ShopkeepersHelper;
+import us.corenetwork.tradecraft.helpers.CitizensHelper;
+import us.corenetwork.tradecraft.helpers.NPCWaiter;
+import us.corenetwork.tradecraft.helpers.ShopkeepersHelper;
 
 /**
  * Created by Matej on 24.2.2014.
@@ -27,10 +28,10 @@ public class TradeCraftListener implements Listener {
 			final Entity villager = event.getEntity();
 
 			// Check if this is a Shopkeeper
-			if (ShopkeepersHelper.shopkeepersActive()) {
+			if (ShopkeepersHelper.shopkeepersActive() || CitizensHelper.citizensActive()) {
 				Bukkit.getScheduler().runTaskAsynchronously(
 						TradeCraftPlugin.instance,
-						new ShopkeeperWaiter(villager));
+						new NPCWaiter(villager));
 			} else if (!NMSVillagerManager.isCustomVillager(villager)) {
 				Bukkit.getScheduler().runTask(TradeCraftPlugin.instance,
 						new Runnable() {

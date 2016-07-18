@@ -1,4 +1,4 @@
-package us.corenetwork.tradecraft.shopkeeper;
+package us.corenetwork.tradecraft.helpers;
 
 import org.bukkit.entity.Entity;
 
@@ -12,21 +12,17 @@ public class ShopkeepersHelper {
 
 	private static ShopkeepersPlugin shopkeepersPlugin; // A handle of
 														// Shopkeepers, for
-
-	// compatibility.
+														// compatibility.
 
 	/**
 	 * Attempts to prepare for interactions with the Shopkeepers plugin, if it
 	 * is loaded.
 	 */
 	public static void connectWithShopkeepers(TradeCraftPlugin plugin) {
-		shopkeepersPlugin = (ShopkeepersPlugin) plugin.getServer()
-				.getPluginManager().getPlugin(SHOPKEEPERS_NAME);
+		shopkeepersPlugin = (ShopkeepersPlugin) plugin.getServer().getPluginManager().getPlugin(SHOPKEEPERS_NAME);
 		if (shopkeepersPlugin != null) {
-			plugin.getLogger()
-					.info("Successfully connected to "
-							+ SHOPKEEPERS_NAME
-							+ " - custom shopkeepers will not be altered by this plugin.");
+			plugin.getLogger().info("Successfully connected to " + SHOPKEEPERS_NAME
+					+ " - custom shopkeepers will not be altered by this plugin.");
 		}
 	}
 
