@@ -4,7 +4,7 @@ TradeCraft
 Custom villager tiers, trades and rebalancing.
 
 Supported version: Spigot 1.10.2 (Works with Shopkeepers)
-
+Now Citizens compatible!
 
 ## Download
 
